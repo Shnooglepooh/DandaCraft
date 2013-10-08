@@ -8,6 +8,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import de.dandacraft.dandacore.blocks.BlockList;
+import de.dandacraft.dandacore.blocks.PowerCable;
 
 @Mod(modid=Resource.MODID, name=Resource.MODNAME, version=Resource.MODVERSION)
 @NetworkMod(clientSideRequired=true)
@@ -22,6 +25,8 @@ public class DandaCore
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event)
 	{
+		BlockList.powerCable = new PowerCable(500);
+		GameRegistry.registerBlock(BlockList.powerCable, BlockList.powerCable.getUnlocalizedName());
     }
     
     @EventHandler
